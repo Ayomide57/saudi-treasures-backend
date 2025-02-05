@@ -1,0 +1,38 @@
+{
+  "name": "saudi-treasures-backend",
+  "version": "1.0.0",
+  "description": "Travel agency",
+  "main": "dist/app.js",
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "lint": "eslint . --ext .ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Ayomide57/saudi-treasures-backend.git"
+  },
+  "author": "ayomide",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ayomide57/saudi-treasures-backend/issues"
+  },
+  "homepage": "https://github.com/Ayomide57/saudi-treasures-backend#readme",
+  "dependencies": {
+    "bull": "^4.16.5",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/express": "^5.0.0",
+    "eslint": "^9.19.0",
+    "globals": "^15.14.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.23.0"
+  }
+}
