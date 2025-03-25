@@ -38,6 +38,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.10.0",
     "mysql2": "^3.12.0",
+    "node-cron": "^3.0.3",
     "nodemailer": "^6.10.0",
     "ts-jest": "^29.2.5",
     "typeorm": "^0.3.20"

@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from "cors";
+//import cron from "node-cron";
 
 
 import session from "express-session";
@@ -13,7 +14,7 @@ import flightRouter from '../src/routes/flight.route';
 import hotelRouter from '../src/routes/hotel.route';
 import adminRouter from '../src/routes/admin.route';
 import notificationRouter from "../src/routes/notification.route";
-
+//import EmailSchedule from "./jobs/EmailSchedule";
 
 
 const app = express();
@@ -42,7 +43,8 @@ app.use(
 const port = Number(process.env.PORT || 3000);
 app.use(cookieParser());
 
-db()
+db();
+//cron.schedule("* * * * * *", EmailSchedule);
 
 app.use(`/api/users/`, userRouter);
 app.use(`/api/flight/`, flightRouter);
