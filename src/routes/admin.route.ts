@@ -4,6 +4,8 @@ import adminController from '../controllers/admin.controller';
 import authAdmin from '../middleware/authAdmin.middleware';
 import {createAdminSchema,updateAdminSchema, validateLogin } from '../middleware/validators/adminValidator.middleware';
 import awaitHandlerFactory from '../middleware/awaitHandlerFactory.middleware';
+import visaController from '../controllers/visa.controller';
+import { addVisaPackageSchema } from '../middleware/validators/visaValidator.middleware';
 
 
 const router = express.Router();
@@ -33,6 +35,9 @@ router.delete(
   authAdmin(),
   awaitHandlerFactory(adminController.deleteAdmin)
 );
+
+router.post('/add-visa-package', addVisaPackageSchema, awaitHandlerFactory(visaController.addVisaPackage));
+
 
 
 

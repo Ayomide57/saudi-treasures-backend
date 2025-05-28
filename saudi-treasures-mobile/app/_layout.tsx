@@ -1,42 +1,40 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { Stack } from "expo-router";
+import "./global.css"
+//import { useRouter } from 'expo-router';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+//  const router = useRouter();
+// onPress={() => router.navigate('/about')
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
-
+export const unstable_settings = {
+  initialRouteName: "Welcome/index.tsx",
+};
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
-  return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack initialRouteName="slider">
-        <Stack.Screen name="slider" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+  return <Stack screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="Welcome/index.tsx"/>
+    <Stack.Screen name="profile" />
+    <Stack.Screen name="login" options={{
+      headerShown: false
+    }}/>
+    <Stack.Screen name="register" />
+    <Stack.Screen name="(tabs)" options={{
+      headerShown: false
+    }} />
+    <Stack.Screen name="(tabs)/home" options={{
+      headerShown: false
+    }} />
+    <Stack.Screen name="(tabs)/travel" options={{
+      headerShown: false
+    }}  />
+    <Stack.Screen name="(tabs)/history" options={{
+      headerShown: false
+    }} />
+    <Stack.Screen name="(tabs)/tour" options={{
+      headerShown: false
+    }} />
+    <Stack.Screen name="(tabs)/hotel" options={{
+      headerShown: false
+    }} />
+    
+  </Stack>;
 }

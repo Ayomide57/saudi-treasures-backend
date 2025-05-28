@@ -79,7 +79,7 @@ class NotificationService {
     if (!result) {
       return {
         response: false,
-        message: "An error caused during updating an exiting notification.",
+        message: "An error while updating an exiting notification.",
         data: null,
       };
     }

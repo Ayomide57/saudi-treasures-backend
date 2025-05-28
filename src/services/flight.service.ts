@@ -48,7 +48,7 @@ class FlightService {
       return {
         response: false,
         message:
-          "An error caused during updating an exiting flight booking order.",
+          "An error while updating an exiting flight booking order.",
         data: null,
       };
     }
@@ -129,8 +129,6 @@ class FlightService {
 
     return { response: true, message: "Successfully deleted.", data: null };
   }
-
-
 
   static checkValidation(data) {
     const errors = validationResult(data);

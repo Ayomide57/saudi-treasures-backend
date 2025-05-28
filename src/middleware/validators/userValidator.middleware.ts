@@ -99,7 +99,7 @@ const createUserSchema = [
             }
             next()
     },
-        body('country')
+    body('country')
         .exists()
         .withMessage('Country is required')
         .isLength({min: 4 })
@@ -404,4 +404,58 @@ const validatePaymentCard = [
         
 ];
 
-export {createUserSchema,updateUserSchema, updatePasswordSchema, validateLogin, validateEmail, validatePaymentCard}
+
+const validateReportSchema = [
+    body('user_id')
+        .exists()
+        .withMessage('User Id is required')
+        .isAlphanumeric()
+        .withMessage('Wrong User ID')
+        .trim(),
+        function(req,res,next) { 
+            const errorValidation = validationResult(req);
+            const errors = errorValidation.array();
+            if ( errors.length !== 0 ) {
+                return res.send({response:false, message:errors[0].msg})
+            }
+            next()
+    },
+    body("report")
+        .exists()
+        .withMessage("Report is required")
+        .isLength({ min: 4 })
+        .withMessage("Report must be at least 3 chars long")
+        .isLength({ max: 200 })
+        .withMessage("Report must not exceed 200 characters")
+        .notEmpty()
+        .trim(),
+        function (req, res, next) {
+            const errorValidation = validationResult(req);
+            const errors = errorValidation.array();
+            if (errors.length !== 0) {
+            return res.send({ response: false, message: errors[0].msg });
+            }
+            next();
+    },
+    body("created_at").exists().withMessage("Created at is required").trim(),
+    function (req, res, next) {
+        const errorValidation = validationResult(req);
+        const errors = errorValidation.array();
+        if (errors.length !== 0) {
+        return res.send({ response: false, message: errors[0].msg });
+        }
+        next();
+    },
+];
+
+
+
+export {
+    createUserSchema,
+    updateUserSchema, 
+    updatePasswordSchema, 
+    validateLogin, 
+    validateEmail, 
+    validatePaymentCard, 
+    validateReportSchema,
+}

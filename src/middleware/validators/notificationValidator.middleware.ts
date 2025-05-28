@@ -46,7 +46,7 @@ const notificationSchema = [
     .exists()
     .withMessage("Message is required")
     .isLength({ min: 4 })
-    .withMessage("Message umst be at least 3 chars long")
+    .withMessage("Message mst be at least 3 chars long")
     .isLength({ max: 200 })
     .withMessage("Message must not exceed 50 characters")
     .notEmpty()

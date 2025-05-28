@@ -9,7 +9,7 @@
     "forceConsistentCasingInFileNames": true
   },
   "lib": ["es2015"],
-    "include": ["src/**/*", "tests/**/*", "tests", "admin/src/services/api/setAuthToken.ts"],
+    "include": ["src/**/*", "tests/**/*", "tests"],
     "exclude": ["node_modules","dist"]
 
 }

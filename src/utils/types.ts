@@ -9,6 +9,8 @@ export interface IUser extends mongoose.Document {
     password: string;
     country: string;
     state: string;
+    user_image: string,
+    passport_image: string,
     created_at: Date;
 };
 
@@ -53,7 +55,7 @@ export interface IFlight extends mongoose.Document {
     created_at: Date;
 };
 
-export interface IHotel extends mongoose.Document {
+export interface IHotelBooking extends mongoose.Document {
   user_id: string;
   room_type: string;
   guests: string;
@@ -63,6 +65,23 @@ export interface IHotel extends mongoose.Document {
   amount: number;
   created_at: Date;
 };
+
+export interface IHotel extends mongoose.Document {
+    hotel_name: string,
+    address: string,
+    description: string,
+    price: number,
+    image: string,
+    created_at: Date,
+  };
+  export interface IHotelRoom extends mongoose.Document {
+    hotel_id: string,
+    room_type: string,
+    price: number,
+    guests: number,
+    image: string,
+    created_at: Date,
+  };
 
 export interface INotification extends mongoose.Document {
     notification_type: string;
@@ -82,4 +101,45 @@ export interface IInvoice extends mongoose.Document {
     total: number;
     created_at: Date;
 };
+export interface ITour extends mongoose.Document {
+    package_name: string,
+    package_types: string,
+    service_types: string,
+    created_at: Date,
+}
 
+export interface ITourService extends mongoose.Document {
+    service_name: string,
+    amount: number,
+    options: string,
+    created_at: Date,
+}
+
+export interface ITour extends mongoose.Document {
+    package_name: string,
+    package_types: string,
+    service_types: string,
+    created_at: Date,
+}
+
+export interface IVisa extends mongoose.Document {
+    user_id: string,
+    visa_type: string,
+    package_id: string,
+    created_at: Date,
+}
+
+export interface IVisaPackage extends mongoose.Document {
+    name: string,
+    country: string,
+    duration: number,
+    processing_time: string,
+    amount: number,
+    created_at: Date,
+}
+
+export interface IReport extends mongoose.Document {
+    user_id: string,
+    report: string,
+    created_at: Date,
+}

@@ -10,6 +10,8 @@ export const UserSchema = new mongoose.Schema({
     password: { type: String, required: true },
     country: {type:String, required: true},
     state: { type: String, required: true },
+    user_image: { type: String, required: false },
+    passport_image: { type: String, required: false },
     created_at: { type: Date, required: true },
 });
 

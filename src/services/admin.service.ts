@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import UserModel from '../models/user.model';
 import AdminModel from '../models/admin.model';
+import {VisaPackageModel} from '../models/visa.model';
 import { validationResult } from 'express-validator';
 import nodemailer from 'nodemailer';
 import jwt from 'jsonwebtoken';
@@ -89,7 +90,7 @@ class AdminService {
     if (!result) {
       return {
         response: false,
-        message: "An error caused during creating new admin",
+        message: "An error occor while creating new admin",
         data: null,
       };
     }
@@ -116,7 +117,7 @@ class AdminService {
     if (!result) {
       return {
         response: false,
-        message: "An error caused during updating an exiting admin.",
+        message: "An error while updating an exiting admin.",
         data: null,
       };
     }
@@ -160,7 +161,7 @@ class AdminService {
       if (!result) {
         return {
           response: false,
-          message: "An error caused during updating your password.",
+          message: "An error while updating your password.",
           data: null,
         };
       }
@@ -177,7 +178,7 @@ class AdminService {
       if (!result) {
         return {
           response: false,
-          message: "An error caused during updating your password.",
+          message: "An error while updating your password.",
           data: null,
         };
       }
@@ -300,6 +301,8 @@ class AdminService {
     }
     return { response: true, message: "Successfully deleted.", data: null };
   }
+
+  
 }
 
 export default AdminService;

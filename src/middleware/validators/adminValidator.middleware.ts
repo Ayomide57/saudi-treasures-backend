@@ -146,7 +146,6 @@ const updateAdminSchema = [
   },
 ];
 
-
 const validateLogin = [
     body('email')
         .exists()
@@ -180,6 +179,8 @@ const validateLogin = [
             next()
         },
 ];
+
+
 
 
 

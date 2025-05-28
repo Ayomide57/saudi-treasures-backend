@@ -8,6 +8,16 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#663695",
+      "dark": {
+        "image": "./assets/images/splash-icon.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#663695"
+      }
+    },
     "ios": {
       "supportsTablet": true
     },
@@ -28,19 +38,17 @@
         "expo-splash-screen",
         {
           "android": {
-            "image": "./assets/images/saudi-logo.png",
+            "image": "./assets/images/splash-icon.png",
             "backgroundColor": "#663695",
-            "justifyContent": "center",
-            "flex": 1,
-            "alignContent": "center",
             "imageWidth": 220,
             "dark": {
-              "image": "./assets/images/saudi-logo.png",
+              "image": "./assets/images/splash-icon.png",
               "backgroundColor": "#663695"
             }
           }
         }
-      ]
+      ],
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true

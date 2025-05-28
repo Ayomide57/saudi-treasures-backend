@@ -4,7 +4,7 @@
   "description": "Travel agency",
   "main": "dist/server.ts",
   "scripts": {
-    "start": "tsc && node dist/server.js",
+    "start": "tsc && node dist/src/server.js",
     "lint": "eslint . --ext .ts",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -46,7 +46,6 @@
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "@types/express": "^5.0.0",
-    "@types/mocha": "^10.0.10",
     "@types/node": "^22.13.1",
     "eslint": "^9.19.0",
     "expect": "^29.7.0",

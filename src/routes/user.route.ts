@@ -1,8 +1,17 @@
 import express from 'express';
 import userController from '../controllers/user.controller';
 import auth from '../middleware/auth.middleware';
-import { createUserSchema, validateLogin, validatePaymentCard, updatePasswordSchema, updateUserSchema } from '../middleware/validators/userValidator.middleware';
+import { 
+  createUserSchema, 
+  validateLogin, 
+  validatePaymentCard, 
+  updatePasswordSchema, 
+  updateUserSchema,
+  validateReportSchema
+} from '../middleware/validators/userValidator.middleware';
 import awaitHandlerFactory from '../middleware/awaitHandlerFactory.middleware';
+import visaController from '../controllers/visa.controller';
+import { validateApplyForVisaSchema } from '../middleware/validators/visaValidator.middleware';
 
 
 const router = express.Router();
@@ -26,6 +35,9 @@ router.delete(
   auth(),
   awaitHandlerFactory(userController.deletePaymentMethod)
 );
+router.post('/apply-for-visa', validateApplyForVisaSchema, auth(), awaitHandlerFactory(visaController.applyForVisa));
+
+router.post('/report', validateReportSchema, auth(), awaitHandlerFactory(userController.createReport));
 
 
 

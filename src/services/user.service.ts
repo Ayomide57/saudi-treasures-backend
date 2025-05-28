@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import UserModel from '../models/user.model';
+import {VisaModel} from '../models/visa.model';
 import EmailVerifyModel from '../models/emailVerify.model';
 import { validationResult } from 'express-validator';
 import nodemailer from 'nodemailer';
@@ -10,6 +11,8 @@ import bcrypt from 'bcryptjs';
 import i18n from 'i18n';
 import { IEmail } from '../utils/types';
 import PaymentModel from '../models/payment.model';
+import ReportModel from '../models/reports.model';
+
 
 dotenv.config();
 
@@ -101,7 +104,7 @@ class UserService {
         return {
           response: false,
           message:
-            "An error was caused during the Email Verification Code generation.",
+            "An error was while the Email Verification Code generation.",
           data: null,
         };
       }
@@ -117,7 +120,7 @@ class UserService {
         return {
           response: false,
           message:
-            "An error was caused during the Email Verification Code generation.",
+            "An error was while the Email Verification Code generation.",
           data: null,
         };
       }
@@ -189,7 +192,7 @@ class UserService {
     if (!result) {
       return {
         response: false,
-        message: "An error caused during creating new user",
+        message: "An error while creating new user",
         data: null,
       };
     }
@@ -216,7 +219,7 @@ class UserService {
     if (!result) {
       return {
         response: false,
-        message: "An error caused during updating an exiting user.",
+        message: "An error while updating an exiting user.",
         data: null,
       };
     }
@@ -260,7 +263,7 @@ class UserService {
       if (!result) {
         return {
           response: false,
-          message: "An error caused during updating your password.",
+          message: "An error while updating your password.",
           data: null,
         };
       }
@@ -277,7 +280,7 @@ class UserService {
       if (!result) {
         return {
           response: false,
-          message: "An error caused during updating your password.",
+          message: "An error while updating your password.",
           data: null,
         };
       }
@@ -315,7 +318,7 @@ class UserService {
     if (!result) {
       return {
         response: false,
-        message: "An error was caused during user registeration.",
+        message: "An error was while user registeration.",
         data: null,
       };
     }
@@ -459,7 +462,7 @@ class UserService {
     if (!result) {
       return {
         response: false,
-        message: "An error caused during creating new user",
+        message: "An error while creating new user",
         data: null,
       };
     }
@@ -522,6 +525,33 @@ class UserService {
 
     return { response: true, message: "Successfully deleted.", data: null };
   }
+
+  static async createReport(rawData) {
+    const check = this.checkValidation(rawData);
+    if (!check) {
+      return {
+        response: false,
+        message: "Send data validation error",
+        data: null,
+      };
+    }
+    rawData.created_at = Date.now();
+    const result = await ReportModel.create(rawData);
+    if (!result) {
+      return {
+        response: false,
+        message: "An error while creating new user",
+        data: null,
+      };
+    }
+    if (result.errors) {
+      return { response: false, message: result.errors, data: null };
+    }
+
+    return { response: true, message: "Success!", data: result._id };
+  }
+
+  
 }
 
 export default UserService;

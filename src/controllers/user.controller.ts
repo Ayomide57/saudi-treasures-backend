@@ -181,7 +181,20 @@ class UserController {
       next(error);
     }
   };
+  createReport = async (req, res, next) => {
+    try {
+      console.log("User called create Report!!!!");
+      const result = await UserService.createReport(req.body);
+      res.send(result);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  
 }
+
+  
 
 
 
